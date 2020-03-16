@@ -1,0 +1,20 @@
+[package]
+build = "build.rs"
+name = "wolf3d_rs"
+version = "0.0.1"
+authors = ["Jonathan Fortin"]
+description = "An implementation of Wolf3d in Rust"
+repository = "https://github.com/jfortin42/wolf3d_rs"
+readme = "README.md"
+keywords = ["game", "wolf3d"]
+license = "Apache-2.0"
+
+[dependencies]
+bitflags = "1.1.0"
+xml-rs = "0.8.0"
+clap = { version = "2.33.0", features = ["yaml"] }
+
+[dependencies.sdl2]
+version = "0.32.2"
+default-features = false
+features = ["image", "ttf"]

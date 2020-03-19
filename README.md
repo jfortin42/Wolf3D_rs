@@ -1,6 +1,6 @@
 # wolf3d_rs
 
-[![Build Status](https://travis-ci.org/jfortin42/wolf3d_rs.svg)](https://travis-ci.org/jfortin42/wolf3d_rs)
+[![Build Status](https://travis-ci.org/jfortin42/wolf3d_rs.svg)](https://travis-ci.com/jfortin42/wolf3d_rs)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 This is an implementation of Wolf3d in the [Rust Programming Language](https://www.rust-lang.org).

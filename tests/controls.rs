@@ -3,9 +3,7 @@ use wolf3d_rs::*;
 
 use wolf3d_rs::sdl2::{ 
     Sdl,
-    EventSubsystem,
-    VideoSubsystem,
-    video::Window,
+    EventSubsystem
 };
 
 use std::error::Error;
@@ -13,22 +11,15 @@ use std::error::Error;
 struct SdlEnv {
     event_pump: EventPump,
     event_subsystem: EventSubsystem,
-    _window: Window, //
-    _video_subsystem: VideoSubsystem, //
     _sdl_context: Sdl
 }
 
 impl SdlEnv {
     fn new() -> Self {
         let _sdl_context = sdl2::init().unwrap();
-        let _video_subsystem = _sdl_context.video().unwrap();
-
-        let _window = _video_subsystem.window("rust-sdl2 demo", 800, 600)
-            .position_centered().build().unwrap();
-        
         let event_subsystem = _sdl_context.event().unwrap();
         let event_pump = _sdl_context.event_pump().unwrap();
-        Self { event_pump, event_subsystem, _window, _video_subsystem, _sdl_context }
+        Self { event_pump, event_subsystem, _sdl_context }
     }
 }
 

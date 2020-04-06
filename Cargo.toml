@@ -18,3 +18,6 @@ clap = { version = "2.33.0", features = ["yaml"] }
 version = "0.32.2"
 default-features = false
 features = ["image", "ttf"]
+
+[[example]]
+name = "controls"

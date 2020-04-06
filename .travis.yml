@@ -9,6 +9,9 @@ matrix:
 env:
   global:
     - LD_LIBRARY_PATH: /usr/local/lib
+script:
+  - cargo test --verbose --all
+  - cargo build --example controls --verbose
 install:
   - cd ..
   - time wget -q http://www.libsdl.org/release/SDL2-2.0.10.tar.gz

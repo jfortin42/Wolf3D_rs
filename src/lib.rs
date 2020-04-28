@@ -16,6 +16,7 @@ pub use sdl2::{
 
 pub use std::time::Duration;
 
+pub use std::rc::Rc;
 pub use std::cell::Cell;
 
 mod controls;

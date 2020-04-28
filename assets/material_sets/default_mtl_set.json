@@ -1,0 +1,56 @@
+{
+    "material_set": [
+        {
+            "name": "default",
+            "symbol": " ",
+            "properties": {
+                "physics_properties": "absorption"
+            },
+            "shading": {
+                "texture": "default.png"
+            }
+        },
+        {
+            "name": "refractive",
+            "symbol": "➬",
+            "properties": {
+                "physics_properties": {
+                    "refraction": { "index": 0.3 }
+                }
+            },
+            "shading": {
+                "texture": "refractive.png"
+            }
+        },
+        {
+            "name": "transmittive",
+            "symbol": "➫",
+            "properties": {
+                "physics_properties": "transmission"
+            },
+            "shading": {
+                "texture": "transmissive.png"
+            }
+        },
+        {
+            "name": "reflective",
+            "symbol": "➪",
+            "properties": {
+                "physics_properties": "reflection"
+            },
+            "shading": {
+                "texture": "reflective.png"
+            }
+        },
+        {
+            "name": "absorbent",
+            "symbol": "➭",
+            "properties": {
+                "physics_properties": "absorption"
+            },
+            "shading": {
+                "color": "0x11223344"
+            }
+        }
+    ]
+}

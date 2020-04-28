@@ -1,0 +1,299 @@
+{
+	"geometry_set": [
+		{
+			"name": "empty",
+			"symbol": " "
+		},
+		{
+			"name": "nw_corner",
+			"symbol": "ﬀ",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0.5, 0],
+						"p2": [0, 0.5]
+					}
+				}
+			]
+		},
+		{
+			"name": "ne_corner",
+			"symbol": "ﬁ",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [1, 0.5],
+						"p2": [0.5, 0]
+					}
+				}
+			]
+		},
+		{
+			"name": "se_corner",
+			"symbol": "ﬂ",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0.5, 1],
+						"p2": [1, 0.5]
+					}
+				}
+			]
+		},
+		{
+			"name": "sw_corner",
+			"symbol": "ﬃ",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0, 0.5],
+						"p2": [0.5, 1]
+					}
+				}
+			]
+		},
+		{
+			"name": "se_corner_cut",
+			"symbol": "ﬆ",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [1, 0.5],
+						"p2": [0.5, 1]
+					}
+				}
+			]
+		},
+		{
+			"name": "sw_corner_cut",
+			"symbol": "﬇",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0.5, 1],
+						"p2": [0, 0.5]
+					}
+				}
+			]
+		},
+		{
+			"name": "nw_corner_cut",
+			"symbol": "ﬄ",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0, 0.5],
+						"p2": [0.5, 0]
+					}
+				}
+			]
+		},
+		{
+			"name": "ne_corner_cut",
+			"symbol": "ﬅ",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0.5, 0],
+						"p2": [1, 0.5]
+					}
+				}
+			]
+		},
+		{
+			"name": "n_wall",
+			"symbol": "﬈",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [1, 0.5],
+						"p2": [0, 0.5]
+					}
+				}
+			]
+		},
+		{
+			"name": "e_wall",
+			"symbol": "﬉",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0.5, 1],
+						"p2": [0.5, 0]
+					}
+				}
+			]
+		},
+		{
+			"name": "s_wall",
+			"symbol": "﬊",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0, 0.5],
+						"p2": [1, 0.5]
+					}
+				}
+			]
+		},
+		{
+			"name": "w_wall",
+			"symbol": "﬋",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0.5, 0],
+						"p2": [0.5, 1]
+					}
+				}
+			]
+		},
+		{
+			"name": "nw_to_se_diagonal_gap",
+			"symbol": "﬌",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0.5, 0],
+						"p2": [0, 0.5]
+					}
+				},
+				{
+					"plane": {
+						"p1": [0.5, 1],
+						"p2": [1, 0.5]
+					}
+				}
+			]
+		},
+		{
+			"name": "nw_to_se_diagonal_bridge",
+			"symbol": "﬍",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0.5, 0],
+						"p2": [1, 0.5]
+					}
+				},
+				{
+					"plane": {
+						"p1": [0.5, 1],
+						"p2": [0, 0.5]
+					}
+				}
+			]
+		},
+		{
+			"name": "ne_to_sw_diagonal_gap",
+			"symbol": "﬎",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [1, 0.5],
+						"p2": [0.5, 0]
+					}
+				},
+				{
+					"plane": {
+						"p1": [0, 0.5],
+						"p2": [0.5, 1]
+					}
+				}
+			]
+		},
+		{
+			"name": "ne_to_sw_diagonal_bridge",
+			"symbol": "﬏",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0, 0.5],
+						"p2": [0.5, 0]
+					}
+				},
+				{
+					"plane": {
+						"p1": [1, 0.5],
+						"p2": [0.5, 1]
+					}
+				}
+			]
+		},
+		{
+			"name": "full",
+			"symbol": "﬐"
+		},
+		{
+			"name": "cylinder",
+			"symbol": "﬒",
+			"primitives" : [
+				{
+					"cylinder": {
+						"radius": 0.5
+					}
+				}
+			]
+		},
+		{
+			"name": "cell",
+			"symbol": "﬑",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0, 0],
+						"p2": [1, 0]
+					}
+				},
+				{
+					"plane": {
+						"p1": [1, 0],
+						"p2": [1, 1]
+					}
+				},
+				{
+					"plane": {
+						"p1": [1, 1],
+						"p2": [0, 1]
+					}
+				},
+				{
+					"plane": {
+						"p1": [0, 1],
+						"p2": [0, 0]
+					}
+				}
+			]
+		},
+		{
+			"name": "small_square_column",
+			"symbol": "ﬓ",
+			"primitives" : [
+				{
+					"plane": {
+						"p1": [0.25, 0.25],
+						"p2": [0.75, 0.25]
+					}
+				},
+				{
+					"plane": {
+						"p1": [0.75, 0.25],
+						"p2": [0.75, 0.75]
+					}
+				},
+				{
+					"plane": {
+						"p1": [0.75, 0.75],
+						"p2": [0.25, 0.75]
+					}
+				},
+				{
+					"plane": {
+						"p1": [0.25, 0.75],
+						"p2": [0.25, 0.25]
+					}
+				}
+			]
+		}
+	]
+}

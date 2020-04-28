@@ -2,7 +2,7 @@
 build = "build.rs"
 name = "wolf3d_rs"
 version = "0.0.1"
-authors = ["Jonathan Fortin"]
+authors = ["Jonathan Fortin", "Francois Sidler"]
 description = "An implementation of Wolf3d in Rust"
 repository = "https://github.com/jfortin42/wolf3d_rs"
 readme = "README.md"
@@ -11,7 +11,8 @@ license = "Apache-2.0"
 
 [dependencies]
 bitflags = "1.1.0"
-xml-rs = "0.8.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
 clap = { version = "2.33.0", features = ["yaml"] }
 
 [dependencies.sdl2]

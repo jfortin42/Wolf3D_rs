@@ -1,0 +1,20 @@
+{
+  "spawn_symbol_set": [
+    {
+      "player": 1,
+      "symbol": "ﬔ"
+    },
+    {
+      "player": 2,
+      "symbol": "ﬕ"
+    },
+    {
+      "player": 3,
+      "symbol": "ﬖ"
+    },
+    {
+      "player": 4,
+      "symbol": "ﬗ"
+    }
+  ]
+}

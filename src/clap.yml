@@ -1,0 +1,31 @@
+name: wolf3d_rs
+version: 0.0.1
+about: An implementation of Wolf3d in Rust
+author: Jonathan Fortin and Francois Sidler
+
+settings:
+  - ArgRequiredElseHelp
+
+args:
+  - level_name:
+      help: the name of the directory containing the geometry_map and material_map of the level
+      index: 1
+      required: true
+  # - fullscreen:
+  #     help: Launches the game in fullscreen mode
+  #     short: f
+  #     long: fullscreen
+  # - width:
+  #     help: The width of the window in pixels
+  #     short: w
+  #     long: width
+  #     takes_value: true
+  #     requires:
+  #       - height
+  # - height:
+  #     help: The height of the window in pixels
+  #     short: h
+  #     long: height
+  #     takes_value: true
+  #     requires:
+  #       - width

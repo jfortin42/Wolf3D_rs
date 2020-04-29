@@ -1,8 +1,8 @@
 use super::*;
 
-use std::ops::Sub;
+pub use math_2d::Point;
 
-pub use parser::geometry::Point;
+use math_2d::PrimitiveGeometry;
 
 #[derive(Debug)]
 pub struct SpawnSymbolSet {
@@ -26,77 +26,6 @@ impl SpawnSymbolSet {
             set.players.push(spawn_symbol.player);
         }
         Ok(set)
-    }
-}
-
-
-#[derive(Default, Debug)]
-pub struct Vec2 {
-    pub x: f32,
-    pub y: f32,
-}
-
-impl Vec2 {
-    pub fn normalize(&mut self) {
-        let n = (self.x * self.x + self.y * self.y).sqrt();
-
-        if n != 0.0 {
-            self.x /= n;
-            self.y /= n;
-        }
-    }
-
-    /// counter-clockwise rotation for 2D coordinate system with an inverted y axis
-    pub fn orthogonal(&self) -> Self {
-        Self { x: self.y, y: -self.x }
-    }
-
-    /// dot product
-    pub fn dot(&self, other: &Vec2) -> f32 {
-        self.x * other.x + self.y * other.y
-    }
-}
-
-impl Sub for Point {
-    type Output = Vec2;
-
-    fn sub(self, other: Self) -> Self::Output {
-        Vec2 {
-            x: self.x - other.x,
-            y: self.y - other.y,
-        }
-    }
-}
-
-#[derive(Debug)]
-pub enum PrimitiveGeometry {
-    Plane {
-        p1: Point,
-        p2: Point,
-        n: Vec2,
-    },
-    Cylinder {
-        radius: f32,
-    },
-}
-
-impl PrimitiveGeometry {
-    #[inline]
-    fn create_one_sided_plane(p1: Point, p2: Point) -> Self {
-        let mut p1p2 = p2 - p1;
-        p1p2.normalize();
-        Self::Plane { p1, p2, n: p1p2.orthogonal() }
-    }
-
-    pub fn new(raw_primitive: parser::geometry::PrimitiveGeometry) -> Self {
-        match raw_primitive {
-            parser::geometry::PrimitiveGeometry::Plane{ p1, p2 } => {
-                Self::create_one_sided_plane(p1, p2)
-            },
-            parser::geometry::PrimitiveGeometry::Cylinder{ radius } => {
-                Self::Cylinder { radius }
-            }
-        }
     }
 }
 

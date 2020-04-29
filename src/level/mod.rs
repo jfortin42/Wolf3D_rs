@@ -7,16 +7,18 @@ use parser::{
     material::MaterialMap,
 };
 
-mod material;
-mod geometry;
+pub mod material;
+pub mod geometry;
 
 pub use self::{
-    geometry::Point,
     geometry::GeometrySet,
     material::MaterialSet,
 };
 
-use self::geometry::SpawnSymbolSet;
+use self::geometry::{
+    Point,
+    SpawnSymbolSet,
+};
 
 #[derive(Debug)]
 pub struct Spawn {

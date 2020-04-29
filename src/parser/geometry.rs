@@ -11,12 +11,6 @@ pub struct SpawnSymbolSet {
     pub spawn_symbol_set: Vec<SpawnSymbol>,
 }
 
-#[derive(Deserialize, Default, PartialEq, Clone, Copy, Debug)]
-pub struct Point {
-    pub x: f32,
-    pub y: f32,
-}
-
 #[derive(Deserialize, Debug)]
 #[serde(rename_all = "lowercase")]
 pub enum PrimitiveGeometry {

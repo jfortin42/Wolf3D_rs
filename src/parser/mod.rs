@@ -14,6 +14,8 @@ pub use serde::Deserialize;
 pub mod material;
 pub mod geometry;
 
+use math_2d::Point;
+
 pub fn read_assets_file<P, S>(dirs: &[P], file_name: S) -> Result<BufReader<impl Read>, Box<dyn Error>>
     where
         P: AsRef<Path>,

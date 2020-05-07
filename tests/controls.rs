@@ -23,9 +23,14 @@ impl SdlEnv {
     }
 }
 
+struct Evidence {
+    boolean: Rc<Cell<bool>>,
+    scancode: Option<Scancode>,
+}
+
 struct TestEnv<'a> {
     size: usize,
-    evidence: Vec<Rc<Cell<bool>>>,
+    evidence: Vec<Evidence>,
     events: Vec<Event>,
     handles: Vec<Option<ControlHandle<'a>>>,
     ctrl_handler: ControlHandler<'a>
@@ -33,12 +38,12 @@ struct TestEnv<'a> {
 
 impl<'a> TestEnv<'a> {
     fn new(size: usize) -> Self {
-        let mut evidence: Vec<Rc<Cell<bool>>> = Vec::with_capacity(size);
+        let mut evidence: Vec<Evidence> = Vec::with_capacity(size);
         let mut events: Vec<Event> = Vec::with_capacity(size);
         let mut handles: Vec<Option<ControlHandle>> = Vec::with_capacity(size);
         for i in 0..size {
-            evidence.push(Rc::new(Cell::new(false)));
             let scancode = Some(Scancode::from_i32(Scancode::A as i32 + i as i32).unwrap());
+            evidence.push(Evidence { boolean: Rc::new(Cell::new(false)), scancode });
             let event = Event::KeyDown {
                 timestamp: 0, window_id: 0, keycode: None, scancode, keymod: Mod::NOMOD, repeat: false
             };
@@ -49,14 +54,22 @@ impl<'a> TestEnv<'a> {
         Self { size, evidence, events, handles, ctrl_handler }
     }
 
-    fn create_action(evidence: Rc<Cell<bool>>) -> Box<dyn FnMut() + 'a> {
-        Box::new(move || evidence.set(true))
+    fn create_action(evidence: Evidence) -> Box<dyn FnMut(Event) + 'a> {
+        Box::new(move |event: Event| 
+            match event {
+                Event::KeyDown{ scancode, .. } => {
+                    assert_eq!(evidence.scancode, scancode, "wrong scancode");
+                    evidence.boolean.set(true);
+                },
+                _ => { panic!("event type was wrong"); }
+            }
+        )
     }
 
     fn add_controls(&mut self, indexes: &[usize]) -> Result<(), Box<dyn Error>> {
         for i in 0..indexes.len() {
             let event = self.events[indexes[i]].clone();
-            let action = Self::create_action(Rc::clone(&self.evidence[indexes[i]]));
+            let action = Self::create_action(Evidence { boolean: Rc::clone(&self.evidence[indexes[i]].boolean), ..self.evidence[indexes[i]] });
             let handle = self.ctrl_handler.add_control(ControlManagerType::Game, event, action)?;
             self.handles[indexes[i]] = Some(handle);
         }
@@ -71,7 +84,7 @@ impl<'a> TestEnv<'a> {
     }
 
     fn replace_control(&mut self, dest: usize, src: usize) {
-        let action = Self::create_action(Rc::clone(&self.evidence[src]));
+        let action = Self::create_action(Evidence {boolean: Rc::clone(&self.evidence[src].boolean), ..self.evidence[dest]});
         self.handles[dest].as_mut().unwrap().replace(action);
     }
 
@@ -82,17 +95,17 @@ impl<'a> TestEnv<'a> {
         self.ctrl_handler.call_loop(&mut sdl_env.event_pump);
     }
 
-    fn check_evidences(&self, indexes: &[usize], cmp: bool) -> bool {
-        for i in 0..indexes.len() {
-            if self.evidence[indexes[i]].get() != cmp { return false; }
-        }
-        true
-    }
-
     fn reset_evidences(&self) {
         for i in 0..self.size {
-            self.evidence[i].set(false);
+            self.evidence[i].boolean.set(false);
         }
+    }
+
+    fn check_evidences(&self, indexes: &[usize], cmp: bool) -> bool {
+        for i in 0..indexes.len() {
+            if self.evidence[indexes[i]].boolean.get() != cmp { return false; }
+        }
+        true
     }
 
     fn debug_handles(&self, indexes: &[usize]) -> String {
@@ -148,6 +161,6 @@ fn control_err() {
 
     // adding a control on an unknown event
     let event_unknown = Event::Unknown { timestamp: 0, type_: 0 };
-    let err = env.ctrl_handler.add_control(ControlManagerType::Game, event_unknown, Box::new(|| {})).unwrap_err();
-    assert_eq!(err.to_string(), "event unknown");
+    let err = env.ctrl_handler.add_control(ControlManagerType::Game, event_unknown, Box::new(|_: Event| {})).unwrap_err();
+    assert_eq!(err.to_string(), format!("event unknown"));
 }

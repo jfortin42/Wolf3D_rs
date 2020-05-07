@@ -17,7 +17,7 @@ fn main() {
     let event_quit = Event::KeyDown {
         timestamp: 0, window_id: 0, keycode: None, scancode: Some(Scancode::Escape), keymod: Mod::NOMOD, repeat: false
     };
-    let quit_action = Box::new(|| {
+    let quit_action = Box::new(|_: Event| {
         game_loop.set(false);
         println!("Escape key pressed: Quit!");
     });

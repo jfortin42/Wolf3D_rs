@@ -5,6 +5,8 @@ mod geometry;
 
 pub use self::vec2::Vec2;
 
+pub use self::ray::Ray;
+
 pub use self::mat2::Mat2;
 
 pub use self::geometry::PrimitiveGeometry;

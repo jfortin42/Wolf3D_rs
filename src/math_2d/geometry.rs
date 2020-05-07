@@ -20,7 +20,7 @@ impl PrimitiveGeometry {
     fn create_one_sided_plane(p1: Vec2, p2: Vec2) -> Self {
         let mut p1p2 = p2 - p1;
         p1p2.normalize();
-        Self::Plane { p1, p2, n: p1p2.orthogonal() }
+        Self::Plane { p1, p2, n: p1p2.orthogonal(false) }
     }
 
     pub fn new(raw_primitive: parser::geometry::PrimitiveGeometry) -> Self {

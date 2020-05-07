@@ -7,6 +7,10 @@ use parser::{
     material::MaterialMap,
 };
 
+use math_2d::{
+    Vec2,
+};
+
 pub mod material;
 pub mod geometry;
 
@@ -15,15 +19,12 @@ pub use self::{
     material::MaterialSet,
 };
 
-use self::geometry::{
-    Point,
-    SpawnSymbolSet,
-};
+use self::geometry::SpawnSymbolSet;
 
 #[derive(Debug)]
 pub struct Spawn {
     pub player: usize,
-    pub coordinates: Point
+    pub coordinates: Vec2
 }
 
 #[derive(Default, Debug)]
@@ -61,7 +62,7 @@ impl Level {
                 } else if let Some(idx) = spawn_symbol_set.symbols.chars().position(|symbol| { symbol == geo_symbol }) {
                     self.spawns.push(Spawn {
                         player: spawn_symbol_set.players[idx],
-                        coordinates: Point {
+                        coordinates: Vec2 {
                             x: line as f32 + 0.5,
                             y: col as f32 + 0.5,
                         },

@@ -14,7 +14,7 @@ pub struct SpawnSymbolSet {
 #[derive(Deserialize, Debug)]
 #[serde(rename_all = "lowercase")]
 pub enum PrimitiveGeometry {
-    Plane { p1: Point, p2: Point },
+    Plane { p1: Vec2, p2: Vec2 },
     Cylinder { radius: f32 },
 }
 

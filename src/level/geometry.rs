@@ -1,7 +1,5 @@
 use super::*;
 
-pub use math_2d::Point;
-
 use math_2d::PrimitiveGeometry;
 
 #[derive(Debug)]

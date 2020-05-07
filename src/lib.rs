@@ -8,6 +8,7 @@ pub use clap::App;
 
 pub use std::time::Duration;
 
+pub use sdl2::pixels::Color;
 
 mod controls;
 pub use controls::controls::*;

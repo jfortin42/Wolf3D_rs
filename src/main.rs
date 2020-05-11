@@ -20,12 +20,19 @@ fn main() -> Result<(), Box<dyn Error>> {
     let level_name = matches.value_of("level_name").unwrap();
    
     let level = Level::new(level_name)?;
-
+    if level.spawns.len() == 0 {
+        return Err("no spawn available".into());
+    }
     let game_loop = Cell::new(true);
     let mut control_handler = ControlHandler::new();
+    
+    let mut player = Player::new(level.spawns[0].coordinates, Vec2 { x: 0.0, y: 1.0 }, &mut control_handler)?;
+
+    sdl_context.mouse().set_relative_mouse_mode(true);
+    timer::init_timer(sdl_context.timer()?);
 
     let mut canvas = window.into_canvas().build().unwrap();
-    canvas.set_draw_color(Color::RGB(0, 255, 255));
+    canvas.set_draw_color(Color::RGB(70, 75, 90));
     canvas.clear();
     canvas.present();
 
@@ -40,14 +47,14 @@ fn main() -> Result<(), Box<dyn Error>> {
         .add_control(ControlManagerType::Game, event_quit, quit_action)
         .unwrap();
 
-    let mut i = 0;
     let mut event_pump = sdl_context.event_pump().unwrap();
     while game_loop.get() {
-        i = (i + 1) % 255;
-        canvas.set_draw_color(Color::RGB(i, 64, 255 - i));
+        timer::update();
+        canvas.set_draw_color(Color::RGB(70, 75, 90));
         canvas.clear();
+        level.draw(&mut canvas, player.position, player.direction)?;
         control_handler.call_loop(&mut event_pump);
-        // The rest of the game loop goes here...  
+        player.update(&level.map, &level.geo_set);
         canvas.present();
         std::thread::sleep(Duration::new(0, 1_000_000_000u32 / 60));
     }

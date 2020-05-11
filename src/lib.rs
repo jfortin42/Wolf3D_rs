@@ -20,3 +20,8 @@ mod parser;
 
 mod level;
 pub use level::*;
+
+mod player;
+pub use player::*;
+
+pub mod timer;

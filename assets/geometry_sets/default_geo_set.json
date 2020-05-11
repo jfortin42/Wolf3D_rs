@@ -230,7 +230,7 @@
 			"primitives" : [
 				{
 					"cylinder": {
-						"radius": 0.5
+						"radius": 0.45
 					}
 				}
 			]

@@ -11,7 +11,7 @@ pub use std::path::{
 
 use math_2d::Vec2;
 
-pub use serde::Deserialize;
+use serde::Deserialize;
 
 pub mod material;
 pub mod geometry;

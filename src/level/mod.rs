@@ -218,17 +218,6 @@ impl Level {
             
             // wall_dist = perpendicular wall dist
             let wall_dist = loop {
-                // jump to next tile, either in x-direction or in y-direction
-                if side_dist.x <= side_dist.y && !on_x_border(&self.map, tile_x) {
-                    side_dist.x += delta_dist.x;
-                    x_step(&mut tile_x);
-                } else if side_dist.y < side_dist.x && !on_y_border(&self.map, tile_y) {
-                    side_dist.y += delta_dist.y;
-                    y_step(&mut tile_y);
-                } else {
-                    continue 'main;
-                }
-                
                 // check if ray has hit a wall
                 let tile_geometries = &self.geo_set.geometries[self.map.tiles[tile_y][tile_x].geo_idx];
                 if tile_geometries.is_some() {
@@ -243,6 +232,17 @@ impl Level {
                     if t_min.is_some() {
                         break t_min.unwrap() / ray_len;
                     }
+                }
+
+                // jump to next tile, either in x-direction or in y-direction
+                if side_dist.x <= side_dist.y && !on_x_border(&self.map, tile_x) {
+                    side_dist.x += delta_dist.x;
+                    x_step(&mut tile_x);
+                } else if side_dist.y < side_dist.x && !on_y_border(&self.map, tile_y) {
+                    side_dist.y += delta_dist.y;
+                    y_step(&mut tile_y);
+                } else {
+                    continue 'main;
                 }
             };
 

@@ -83,13 +83,10 @@ impl PrimitiveGeometry {
 
             if u >= 0.0 && u <= 1.0 {
                 let t = qp.cross(p2p1) / rxs;
-                Some(t)
-            } else {
-                None
+                return Some(t);
             }
-        } else {
-            None
         }
+        None
     }
 
     /// this method can return:
@@ -126,19 +123,22 @@ impl PrimitiveGeometry {
     }
 
     pub fn ray_intersection(&self, ray: Ray, tile_x: usize, tile_y: usize) -> Option<f32> {
+        let mut t: Option<f32> = None;
         match self {
             &Self::Plane{ p1, p2, n } => {
                 let tile = Vec2{ x: tile_x as f32, y: tile_y as f32 };
-                Self::ray_osseg_intersection(ray, p1 + tile, p2 + tile, n)
+                t = Self::ray_osseg_intersection(ray, p1 + tile, p2 + tile, n);
             },
             &Self::Cylinder{ radius } => {
                 let center = Vec2 { x: tile_x as f32 + 0.5, y: tile_y as f32 + 0.5 };
                 if let Some((t0, _)) = Self::ray_circle_intersection(ray, center, radius) {
-                    Some(t0)
-                } else {
-                    None
+                    t = Some(t0)
                 }
             }
         }
+        if t.is_some() && t.unwrap() >= 0.0 {
+            return t;
+        }
+        None
     }
 }

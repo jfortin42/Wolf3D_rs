@@ -140,6 +140,7 @@ impl<'a> Player<'a> {
         // [ cos(a) -sin(a) ] [dir.x]
         // [ sin(a)  cos(a) ] [dir.y]
         self.direction = rot_matrix * self.direction;
+        self.direction.normalize();
         self.actions.turn.xrel.set(0);
         self.actions.turn.yrel.set(0);
     }

@@ -73,11 +73,11 @@ The resulting arrow indicates the direction your plane will face in game. That d
    }                    |     }
                         |
                         |
-           p2           |             p2
+           p2           |             p1
            |            |             |				
         <--|            |             |-->
            |            |             |
-           p1           |             p1
+           p1           |             p2
 ```
 
 ## material sets

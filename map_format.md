@@ -29,7 +29,10 @@ The `assets/` directory is organized as follows:
 │
 ├───portal_symbol_sets
 │       default_portal_symbols.json
-│       
+|
+├───skybox
+│       sky_texture.png
+|
 └───spawn_symbol_sets
         default_spawn_symbols.json
 ```
@@ -137,11 +140,14 @@ To set a spawn in your map, simply add a spawn symbol in the geometry map.
 The material map file contains the following fields:
 * (required) **"material_set"**: the name of the material set whose materials can be used in the map.
 * (required) **"portal_symbol_set"**: the name of the portal symbol set whose portals can be used in the map.
+* (optional) **"skybox"**: the skybox texture.
 * (optional) **"previous_level"**: the name of the previous level.
 * (optional) **"next_level"**: the name of the next level.
 * (optional) **"bonus_level"**: the name of the bonus level.
 * (required) **"map"**: the material map composed of material symbols and portal symbols.  
 <mark style="background-color: bisque">/!\ Its dimensions must match with those of the geometry map.</mark>
+
+The skybox textures are located in the `assets/skybox/` folder.
 
 A portal symbol set is a json file located in the `assets/portal_symbol_sets/` directory. It contains the following fields:
 * (required) **"previous_level_symbol"**: the symbol associated with the portal to the previous level.

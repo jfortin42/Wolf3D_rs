@@ -25,3 +25,5 @@ mod player;
 pub use player::*;
 
 pub mod timer;
+
+mod skybox;

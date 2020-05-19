@@ -2,7 +2,7 @@
   "material_set": "default_mtl_set",
   "portal_symbol_set": "default_portal_symbols",
   "bonus_level": "bocal",
-  "skybox": "sky_texture.png",
+  "skybox": ["sky.png", "cloud.png"],
   "map": [
   "➪➪➪➪➪➪➪➪➪➪➪➪➪➪➪➪➪➪➪➱➪",
   "➪ ➬➬              ➬ ➪",

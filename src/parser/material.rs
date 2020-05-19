@@ -49,6 +49,6 @@ pub struct MaterialMap {
     pub previous_level: Option<String>,
     pub next_level: Option<String>,
     pub bonus_level: Option<String>,
-    pub skybox: Option<String>,
+    pub skybox: Option<Vec<String>>,
     pub map: Vec<String>,
 }

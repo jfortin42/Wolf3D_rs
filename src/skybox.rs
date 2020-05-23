@@ -8,12 +8,10 @@ use sdl2::render::{
     Canvas
 };
 
-use sdl2::video::{Window};
+use sdl2::video::Window;
 use sdl2::rect::Rect;
 
-use math_2d::{
-    Vec2,
-};
+use math_2d::Vec2;
 
 pub struct Skybox <'a> {
     textures: Vec<Texture<'a>>,
@@ -60,7 +58,7 @@ impl<'a> Skybox<'a> {
                     ((1.0 - ratio) * win_width as f32) as u32,
                     win_height / 2,
                 );
-                canvas.copy(&texture, stencil, dest).unwrap();
+                canvas.copy(texture, stencil, dest).unwrap();
                 (fov_left,
                     tex_size.width as i32 - (fov_left * width_per_deg) as i32,
                     ratio)
@@ -83,7 +81,7 @@ impl<'a> Skybox<'a> {
                 (ratio * win_width as f32) as u32,
                 win_height / 2,
             );
-            canvas.copy(&texture, stencil, dest).unwrap();
+            canvas.copy(texture, stencil, dest).unwrap();
         }
     }
 }

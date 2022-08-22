@@ -5,6 +5,15 @@
 
 This is an implementation of Wolf3d in the [Rust Programming Language](https://www.rust-lang.org).
 
+## preview
+
+<img align="center"
+src="https://github.com/Kikoman90/wolf3d_rs/blob/master/screenshots/42_geometry_map.png" width="100%" height="544px" />
+<br />
+<br />
+<img align="center"
+src="https://github.com/Kikoman90/scop/blob/master/screenshots/wolf3d_screen.png" width="100%" height="544px" />
+
 ## Build Instructions
 
 Before building `wolf3d_rs`, you will need to install the developpement libraries for [SDL2](https://www.libsdl.org), preferably with the package manager that comes

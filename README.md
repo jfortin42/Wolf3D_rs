@@ -8,11 +8,11 @@ This is an implementation of Wolf3d in the [Rust Programming Language](https://w
 ## preview
 
 <img align="center"
-src="https://github.com/Kikoman90/wolf3d_rs/blob/master/screenshots/42_geometry_map.png" width="100%" height="544px" />
+src="https://github.com/jfortin42/wolf3d_rs/blob/master/screenshots/42_geometry_map.png" width="100%" height="544px" />
 <br />
 <br />
 <img align="center"
-src="https://github.com/Kikoman90/scop/blob/master/screenshots/wolf3d_screen.png" width="100%" height="544px" />
+src="https://github.com/jfortin42/scop/blob/master/screenshots/wolf3d_screen.png" width="100%" height="544px" />
 
 ## Build Instructions
 
